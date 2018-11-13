@@ -2,7 +2,7 @@ module.exports = {
     parallel (fnArray, cb) {
         let numRan = 0 /* Keeps track of how many functions have run so that we know when to properly trigger callback */
         fnArray.forEach(fn => {
-            fn(() => { /* This is essentially when done() gets called */
+            return fn(() => { /* This is essentially when done() gets called */
                 numRan++
                 numRan===fnArray.length && cb() /* Check if all functions have run, and if so trigger callback */
             })
